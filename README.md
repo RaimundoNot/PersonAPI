@@ -42,9 +42,7 @@ Implementado como Soft Delete, utilizando o método SetInactive.
 ## - Migrations
 - Pasta gerada automaticamente pelo comando dotnet ef migrations add, contendo o histórico de alterações do modelo de dados.
 
-# 🗄️ Banco de Dados
-
-SQLite
+# 🗄️ Banco de Dados - SQLite
 - Visualização: extensão de Database do VSCode para SQLite, permitindo acompanhar em tempo real as alterações no banco.
 
 # 🔗 Documentação
