@@ -2,7 +2,7 @@
 
 ## 📌 Escopo inicial
 
-Este projeto é um CRUD de API Minimal em desenvolvimento, utilizando .NET 10 com Entity Framework Core e SQLite.
+Este projeto é um CRUD de API Minimal, utilizando .NET 10 com Entity Framework Core e SQLite.
 Atualmente já está rodando com Swagger configurado, permitindo visualizar e testar os endpoints.
 
 
