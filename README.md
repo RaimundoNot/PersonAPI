@@ -7,8 +7,15 @@ Atualmente já está rodando com Swagger configurado, permitindo visualizar e te
 
 
 ## 🚀 Funcionalidades implementadas
-- Endpoint GET /person que retorna uma instância da classe PersonModels.
-- Endpoint POST /person que recebe um PersonRequest e persiste no banco de dados SQLite.
+- Create: POST /person
+Recebe um PersonRequest e persiste no banco de dados SQLite.
+- Read: GET /person
+Retorna todas as pessoas cadastradas.
+- Update: PUT /person/{id}
+Atualiza o nome de uma pessoa existente utilizando o método ChangeName.
+- Delete: DELETE /person/{id}
+Implementado como Soft Delete, utilizando o método SetInactive.
+(Em vez de excluir definitivamente a linha do banco, o registro é marcado como "desativado", preservando o histórico.)
 
 ## 📁 Estrutura
 
@@ -17,13 +24,17 @@ Atualmente já está rodando com Swagger configurado, permitindo visualizar e te
  - Id (Guid): gerado automaticamente para garantir unicidade.
  - O uso de Guid evita colisões e é útil em cenários distribuídos, onde IDs sequenciais poderiam gerar conflitos.
  - Name (string): nome da pessoa.
+ - ChangeName(string name): atualiza o nome.
+ - SetInactive(): marca a pessoa como inativa, implementando o conceito de Soft Delete.
  - init no Id: garante que o valor só pode ser definido na inicialização, mantendo imutabilidade após criado.
  - PersonRequest: definido como um record, simplificando a criação de tipos imutáveis e ideais para representar dados de entrada.
 
 ## - Routes
 - PersonRoute: define o grupo de rotas /person, incluindo:
-- GET /person
 - POST /person (com persistência no banco via EF Core).
+- GET /person (retorna todas as pessoas ativas).
+- PUT /person/{id} (atualiza o nome de uma pessoa existente).
+- DELETE /person/{id} (marca a pessoa como inativa, implementando Soft Delete).
 
 ## - Data
 - PersonContext: contexto do Entity Framework Core configurado para usar SQLite (person.sqlite).
@@ -36,9 +47,15 @@ Atualmente já está rodando com Swagger configurado, permitindo visualizar e te
 ## - Banco de dados: SQLite
 - Visualização: extensão de Database do VSCode para SQLite, permitindo acompanhar em tempo real as alterações no banco.
 
+# 🔗 Documentação
+A API está documentada com Swagger/OpenAPI.
 
-## 📖 Status- Projeto em desenvolvimento.
-- Projeto em desenvolvimento.
-- Swagger já está configurado e funcionando para documentação e testes dos endpoints.
-- CRUD em construção: atualmente implementados Read e Create.
-- Próximos passos: implementar Update e Delete, além de adicionar validações e tratamento de erros.
+- Interface interativa: [Swagger UI](https://localhost:5121/swagger)  
+- Especificação JSON: [OpenAPI](http://localhost:5121/swagger/v1/swagger.json)
+
+> Execute `dotnet run` e acesse os links acima para visualizar e testar os endpoints.
+
+# 📖 Status 
+Projeto Finalizado.
+- Swagger configurado e funcionando para documentação e testes dos endpoints.
+- CRUD em completo.
